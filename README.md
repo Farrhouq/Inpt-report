@@ -17,3 +17,5 @@ A host is a network service which has an IP address. Host discovery forms part o
 Using `nmap`, we can discover the hosts on the given network by performing a ping scan as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/1.png)
+
+- The `-sn` flag indicates a ping scan to determine which hosts are up.
