@@ -19,3 +19,7 @@ Using `nmap`, we can discover the hosts on the given network by performing a pin
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/1.png)
 
 - The `-sn` flag indicates a ping scan to determine which hosts are up.
+
+Now, after determining which hosts are up from the `nmap` scan, it's we would want to extract the active IPs into a file for later use. This can be done by modifying the command as follows:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/2.png)
