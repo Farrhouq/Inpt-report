@@ -56,4 +56,10 @@ Similar can be done for the other protocols: (mysql, vnc, rdp, smtp, telnet, net
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/9.png)
 
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/.png)
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/11.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/10.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/10.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/11.png)
