@@ -68,7 +68,7 @@ Similar can be done for the other protocols: (mysql, vnc, rdp, smtp, telnet, net
 
 
 There are associated vulnerabilities with these services and their versions. The relevant CVE id's are listed below:
-## Apache httpd 2.4.49 (on http):
+### Apache httpd 2.4.49 (on http):
   - CVE-2021-42013
   - CVE-2021-41773
   - CVE-2021-41524
@@ -77,7 +77,7 @@ There are associated vulnerabilities with these services and their versions. The
   - CVE-2021-36160
   - CVE-2021-34798
 
-## MySQL 5.6.49 (on mysql)
+### MySQL 5.6.49 (on mysql)
   - CVE-2020-14867
   - CVE-2020-14812
   - CVE-2020-14793
@@ -85,7 +85,7 @@ There are associated vulnerabilities with these services and their versions. The
   - CVE-2020-14765
   - CVE-2020-14672
 
-## RealVNC 5.3.2 (on vnc)
+### RealVNC 5.3.2 (on vnc)
   - CVE-2024-6894
   - CVE-2024-23663
   - CVE-2024-1331
@@ -176,3 +176,55 @@ There are associated vulnerabilities with these services and their versions. The
   - CVE-2004-0697
   - CVE-2004-0696
   - CVE-2004-0695
+
+### Microsoft Terminal Services (on rdp)
+  - CVE-2021-26887
+  - CVE-2017-0176
+  - CVE-2014-0296
+  - CVE-2012-0152
+  - CVE-2011-1991
+  - CVE-2009-1929
+  - CVE-2009-1133
+  - CVE-2007-2593
+  - CVE-2006-4465
+  - CVE-2006-4219
+  - CVE-2005-3176
+  - CVE-2005-1794
+  - CVE-2004-0900
+  - CVE-2004-0899
+  - CVE-2003-0807
+  - CVE-2003-0109
+  - CVE-2003-0003
+  - CVE-2002-1933
+  - CVE-2002-1795
+  - CVE-2002-0864
+  - CVE-2002-0863
+  - CVE-2002-0726
+  - CVE-2002-0694
+  - CVE-2002-0693
+  - CVE-2002-0444
+  - CVE-2001-0908
+  - CVE-2000-0089
+
+### Exim smtpd 4.92 (on smtp)
+  - CVE-2023-51766
+  - CVE-2023-42119
+  - CVE-2023-42117
+  - CVE-2023-42116
+  - CVE-2023-42115
+  - CVE-2021-38371
+  - CVE-2020-28024
+  - CVE-2020-28023
+  - CVE-2020-28021
+  - CVE-2020-28020
+  - CVE-2020-28018
+  - CVE-2019-16928
+  - CVE-2019-13917
+  - CVE-2018-6789
+  - CVE-2017-16944
+  - CVE-2017-16943
+  - CVE-2012-5671
+  - CVE-2010-4345
+  - CVE-2010-4344
+  - CVE-2003-0743
+  - CVE-2001-0690
