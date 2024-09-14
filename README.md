@@ -145,3 +145,7 @@ A similart approach can be taken for the host 10.10.10.30 running a python serve
 can execute base64 encoded payloads:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/23.png)
+
+The generated payloads ready to be delivered are shown in the directory below:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/24.png)
