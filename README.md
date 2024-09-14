@@ -118,3 +118,8 @@ Similar steps will be followed for vnc, rdp, and smb scans:
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/18.png)
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/19.png)
+
+
+In the above scans, public password lists were used for each service. However, in situations where we suspect the target might be using site-specific or context-relevant passwords (e.g., company names, employee names, or phrases from the website), we can generate our custom wordlists using a tool called `cewl`. This is demonstrated below:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
