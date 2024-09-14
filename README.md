@@ -91,3 +91,12 @@ There are associated vulnerabilities with these services and their versions. The
 
 ### Windows 7 - Samba file sharing (on microsoft-ds)
 *CVE-2010-2729, CVE-2009-2813, CVE-2007-2407*
+
+
+## Vulnerability Scanning
+Using the protocol specific files we created under service discovery, we can scan for login vulnerabilities with the Metasploit Auxilliary module. We will scan for common credentials
+for mysql, vnc, rdp and smb services. This will be achieved by the following steps:
+
+1. First, we access the Metaspoit Framework Console using msfconsole:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/13.png)
