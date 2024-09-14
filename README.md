@@ -111,3 +111,10 @@ for mysql, vnc, rdp and smb services. This will be achieved by the following ste
 3. Next, we set the parameters we need for the module, and run the scan:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/16.png)
+
+Similar steps will be followed for vnc, rdp, and smb scans:
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/17.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/18.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/19.png)
