@@ -228,3 +228,19 @@ There are associated vulnerabilities with these services and their versions. The
   - CVE-2010-4344
   - CVE-2003-0743
   - CVE-2001-0690
+
+### BSD telnetd (on telnet)
+  - CVE-2011-4862
+  - CVE-2005-0488
+  - CVE-2005-0469
+  - CVE-2005-0468
+  - CVE-2001-0554
+  - CVE-1999-1098
+
+### Samba 3.6.25 (on netbios-ssn)
+  - CVE-2015-0240
+
+### Windows 7 - Samba file sharing (on microsoft-ds)
+  - CVE-2010-2729
+  - CVE-2009-2813
+  - CVE-2007-2407
