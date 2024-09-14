@@ -43,3 +43,17 @@ We can use `nmap` to do a service discovery by scanning the ports on the hosts w
 In order to effectively use our results in later specific attacks, it would be more convenient to sort the services discovered into their respective protocols. Since our output file was saved in a greppable format, we can achieve this using `grep`:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/5.png)
+
+- The `mkdir` command is used to create a new folder for better organisation of the protocol specific results.
+
+Similar can be done for the other protocols: (mysql, vnc, rdp, smtp, telnet, netbios-ssn, microsoft-ds) as follows:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/6.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/7.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/8.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/9.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/.png)
