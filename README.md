@@ -27,3 +27,11 @@ Now, after determining which hosts are up from the `nmap` scan, it's we would wa
 Lastly, we can perform a subdomain enumeration on the given domain, in order to find the IP addresses of any subdomains, as they might be of interest. This can be done using a tool like `aiodnsbrute` as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/3.png)
+
+
+## Service Discovery and Port Scanning
+After discovering the hosts that are up, in order to find and exploit potential vulnerabilities, we need to discover what services these hosts are running, and on what ports. It is these services we will hack into in the end.
+
+We can use `nmap` to do a service discovery by scanning the ports on the hosts we discovered earlier. Also, it will be convenient for us to save the results in a file for later use:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/4.png)
