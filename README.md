@@ -66,6 +66,9 @@ Similar can be done for the other protocols: (mysql, vnc, rdp, smtp, telnet, net
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/12.png)
 
+The associated IP's can be further filtered into separate files for more direct use:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/15.png)
 
 There are associated vulnerabilities with these services and their versions. The relevant CVE id's are listed below:
 ### Apache httpd 2.4.49 (on http):
@@ -100,3 +103,11 @@ for mysql, vnc, rdp and smb services. This will be achieved by the following ste
 1. First, we access the Metaspoit Framework Console using msfconsole:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/13.png)
+
+2. Then, we access the mysql auxiliary login scanner as follows:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/14.png)
+
+3. Next, we set the parameters we need for the module, and run the scan:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/16.png)
