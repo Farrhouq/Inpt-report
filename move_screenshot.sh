@@ -1,5 +1,5 @@
 #!/bin/bash
-# This is the script for conveniently moving my screenshots from the default directory in the into /images
+# script for conveniently moving my screenshots from the default directory into /images
 cd ~/Pictures/Screenshots
 mv "$(ls | tail -1)" ~/Desktop/CyberS/CyberLabInternship/Inpt-report/images
 cd ~/Desktop/CyberS/CyberLabInternship/Inpt-report/images
