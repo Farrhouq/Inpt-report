@@ -13,24 +13,24 @@
 
 
 ## Host Discovery
-A host is a network service which has an IP address. Host discovery forms part of the information gathering process, where we find information about the hosts that are active in the given network to know what is possible to hack through.
+A host is a network service which has an IP address. Host discovery forms part of the information-gathering process, where we find information about the active hosts in the given network to know what is possible to hack through.
 Using `nmap`, we can discover the hosts on the given network by performing a ping scan as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/1.png)
 
 - The `-sn` flag indicates a ping scan to determine which hosts are up.
 
-Now, after determining which hosts are up from the `nmap` scan, it's we would want to extract the active IPs into a file for later use. This can be done by modifying the command as follows:
+Now, after determining which hosts are up from the `nmap` scan, we would want to extract the active IPs into a file for later use. This can be done by modifying the command as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/2.png)
 
-Lastly, we can perform a subdomain enumeration on the given domain, in order to find the IP addresses of any subdomains, as they might be of interest. This can be done using a tool like `aiodnsbrute` as follows:
+Lastly, we can perform a subdomain enumeration on the given domain, to find the IP addresses of any subdomains, as they might be of interest. This can be done using a tool like `aiodnsbrute` as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/3.png)
 
 
 ## Service Discovery and Port Scanning
-After discovering the hosts that are up, in order to find and exploit potential vulnerabilities, we need to discover what services these hosts are running, and on what ports. It is these services we will hack into in the end.
+After discovering the hosts that are up, to find and exploit potential vulnerabilities, we need to learn what services these hosts are running, and on what ports. It is necessary to find the services we might be able to hack into eventually.
 
 We can use `nmap` to do a service discovery by scanning the ports on the hosts we discovered earlier. Also, it will be convenient for us to save the results in a file for later use:
 
@@ -38,15 +38,15 @@ We can use `nmap` to do a service discovery by scanning the ports on the hosts w
 
 - The `sV` flag indicates a service discovery scan.
 - The `iL` flag is used to input the IP addresses from a file. In this case, I used the output file from the host discovery file as the input to this scan (`online_hosts.txt`).
-- The `oG` flag indicates that the output be in a greppable format, which is easy to extract the results from. It requires an output file name, which is given as `service_scan.gnmap`.
+- The `oG` flag indicates that the output is to be put in a greppable format, making it easy to extract the results from it. It requires an output file name, `service_scan.gnmap`.
 
-In order to effectively use our results in later specific attacks, it would be more convenient to sort the services discovered into their respective protocols. Since our output file was saved in a greppable format, we can achieve this using `grep`:
+To effectively use our results in later specific attacks, it would be more convenient to sort the services discovered into their respective protocols. Since our output file was saved in a greppable format, we can achieve this using `grep`:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/5.png)
 
-- The `mkdir` command is used to create a new folder for better organisation of the protocol specific results.
+- The `mkdir` command creates a new folder to organise the protocol-specific results.
 
-Similar can be done for the other protocols: (mysql, vnc, rdp, smtp, telnet, netbios-ssn, microsoft-ds) as follows:
+A similar can be done for the other protocols: (`mysql`, `vnc`, `rdp`, `smtp`, `telnet`, `netbios-ssn`, `microsoft-ds`) as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/6.png)
 
@@ -66,7 +66,7 @@ Similar can be done for the other protocols: (mysql, vnc, rdp, smtp, telnet, net
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/12.png)
 
-The associated IP's can be further filtered into separate files for more direct use:
+The associated IPs can be further filtered into separate files for more direct use:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/15.png)
 
@@ -92,15 +92,15 @@ There are associated vulnerabilities with these services and their versions. The
 ### Samba 3.6.25 (on netbios-ssn)
 *CVE-2015-0240*
 
-### Windows 7 - Samba file sharing (on microsoft-ds)
+### Windows 7 - Samba file sharing (on `microsoft-ds`)
 *CVE-2010-2729, CVE-2009-2813, CVE-2007-2407*
 
 
 ## Vulnerability Scanning
-Using the protocol specific files we created under service discovery, we can scan for login vulnerabilities with the Metasploit Auxilliary module. We will scan for common credentials
-for mysql, vnc, rdp and smb services. This will be achieved by the following steps:
+Using the protocol-specific files we created under service discovery, we can scan for login vulnerabilities with the Metasploit Auxiliary module. We will scan for common credentials
+for `mysql`, `vnc`, `rdp`, and `smb` services. This will be achieved by the following steps:
 
-1. First, we access the Metaspoit Framework Console using msfconsole:
+1. First, we access the Metasploit Framework Console using `msfconsole`:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/13.png)
 
@@ -120,7 +120,7 @@ Similar steps will be followed for vnc, rdp, and smb scans:
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/19.png)
 
 
-In the above scans, public password lists were used for each service. However, in situations where we suspect the target might be using site-specific or context-relevant passwords (e.g., company names, employee names, or phrases from the website), we can generate our custom wordlists using a tool called `cewl`. This is demonstrated below:
+In the above scans, public password lists were used for each service. However, in situations where we suspect the target might be using site-specific or context-relevant passwords (e.g., company names, employee names, or phrases from the website), we can generate custom wordlists using a tool like `cewl`. This is demonstrated below:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
 
@@ -131,17 +131,17 @@ Using `eyewitness`, we can open the links and take screenshots of the web server
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
 
 ## Generating Payloads
-The IP address 10.10.10.55 is running an Apache Tomcat web server. We can generate a payload for this server that can trigger a tcp bind when executed. This bind will give an attacker a shell on the server where they can run malicious code remotely. This can be achieved with the following command:
+The IP address 10.10.10.55 is running an Apache Tomcat web server. We can generate a payload for this server that can trigger a TCP bind when executed. This bind will give an attacker a shell on the server where they can run malicious code remotely. This can be achieved with the following command:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/22.png)
 
-- The `-p` flag allows us to select the payload module to use from msfvenom. In this case, it is `java/jsp_shell_bind_tcp` because the server is java-based.
+- The `-p` flag allows us to select the payload module from `msfvenom`. In this case, it is `java/jsp_shell_bind_tcp` because the server is Java-based.
 - `RHOST` indicates the host IP address which is `10.10.10.55`.
 - `LPORT` indicates the port number, which is 80.
 - The`-f` flag allows us to specify the format of the output payload file. In this case, it is `war` because that is the type of file the server executes.
 - The`-o` flag specifies the name of the output file.
 
-A similart approach can be taken for the host 10.10.10.30 running a python server that
+A similar approach can be taken for the host 10.10.10.30 running a Python server that
 can execute base64 encoded payloads:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/23.png)
