@@ -65,3 +65,114 @@ Similar can be done for the other protocols: (mysql, vnc, rdp, smtp, telnet, net
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/11.png)
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/12.png)
+
+
+There are associated vulnerabilities with these services and their versions. The relevant CVE id's are listed below:
+## Apache httpd 2.4.49 (on http):
+  - CVE-2021-42013
+  - CVE-2021-41773
+  - CVE-2021-41524
+  - CVE-2021-40438
+  - CVE-2021-39275
+  - CVE-2021-36160
+  - CVE-2021-34798
+
+## MySQL 5.6.49 (on mysql)
+  - CVE-2020-14867
+  - CVE-2020-14812
+  - CVE-2020-14793
+  - CVE-2020-14769
+  - CVE-2020-14765
+  - CVE-2020-14672
+
+## RealVNC 5.3.2 (on vnc)
+  - CVE-2024-6894
+  - CVE-2024-23663
+  - CVE-2024-1331
+  - CVE-2023-49438
+  - CVE-2023-45859
+  - CVE-2022-41975
+  - CVE-2022-3474
+  - CVE-2022-27502
+  - CVE-2022-27489
+  - CVE-2022-0439
+  - CVE-2021-42362
+  - CVE-2021-40083
+  - CVE-2021-34408
+  - CVE-2021-24140
+  - CVE-2021-23443
+  - CVE-2021-20746
+  - CVE-2020-5408
+  - CVE-2020-5407
+  - CVE-2020-35738
+  - CVE-2020-35489
+  - CVE-2019-17133
+  - CVE-2019-17075
+  - CVE-2019-17056
+  - CVE-2019-17055
+  - CVE-2019-17054
+  - CVE-2019-17053
+  - CVE-2019-17052
+  - CVE-2018-6660
+  - CVE-2018-6659
+  - CVE-2018-12615
+  - CVE-2018-12029
+  - CVE-2018-12028
+  - CVE-2018-12026
+  - CVE-2017-7671
+  - CVE-2017-7581
+  - CVE-2017-3980
+  - CVE-2017-3936
+  - CVE-2016-8583
+  - CVE-2016-8582
+  - CVE-2016-8581
+  - CVE-2016-8580
+  - CVE-2016-8027
+  - CVE-2016-6355
+  - CVE-2016-1409
+  - CVE-2016-1407
+  - CVE-2016-0201
+  - CVE-2015-6432
+  - CVE-2015-5206
+  - CVE-2015-5168
+  - CVE-2015-4171
+  - CVE-2015-4078
+  - CVE-2014-6275
+  - CVE-2013-6886
+  - CVE-2013-2125
+  - CVE-2012-2317
+  - CVE-2010-4700
+  - CVE-2010-3065
+  - CVE-2010-3064
+  - CVE-2010-3063
+  - CVE-2010-3062
+  - CVE-2010-2225
+  - CVE-2010-2190
+  - CVE-2010-2101
+  - CVE-2010-2100
+  - CVE-2010-2097
+  - CVE-2010-2093
+  - CVE-2010-1917
+  - CVE-2010-1915
+  - CVE-2010-1914
+  - CVE-2010-1868
+  - CVE-2010-1866
+  - CVE-2010-1864
+  - CVE-2010-1862
+  - CVE-2010-1861
+  - CVE-2010-1860
+  - CVE-2010-1587
+  - CVE-2009-1178
+  - CVE-2008-4770
+  - CVE-2008-3493
+  - CVE-2007-5919
+  - CVE-2007-1581
+  - CVE-2006-2369
+  - CVE-2005-0322
+  - CVE-2004-2512
+  - CVE-2004-2511
+  - CVE-2004-1750
+  - CVE-2004-0698
+  - CVE-2004-0697
+  - CVE-2004-0696
+  - CVE-2004-0695
