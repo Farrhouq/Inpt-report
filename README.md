@@ -123,3 +123,9 @@ Similar steps will be followed for vnc, rdp, and smb scans:
 In the above scans, public password lists were used for each service. However, in situations where we suspect the target might be using site-specific or context-relevant passwords (e.g., company names, employee names, or phrases from the website), we can generate our custom wordlists using a tool called `cewl`. This is demonstrated below:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
+
+
+## Web-Based Attack Surfaces
+Using `eyewitness`, we can open the links and take screenshots of the web servers. This can be done as follows:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
