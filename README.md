@@ -129,3 +129,14 @@ In the above scans, public password lists were used for each service. However, i
 Using `eyewitness`, we can open the links and take screenshots of the web servers. This can be done as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
+
+## Generating Payloads
+The IP address 10.10.10.55 is running an Apache Tomcat web server. We can generate a payload for this server that can trigger a tcp bind when executed. This bind will give an attacker a shell on the server where they can run malicious code remotely. This can be achieved with the following command:
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/22.png)
+
+- The `-p` flag allows us to select the payload module to use from msfvenom. In this case, it is `java/jsp_shell_bind_tcp` because the server is java-based.
+- `RHOST` indicates the host IP address which is `10.10.10.55`.
+- `LPORT` indicates the port number, which is 80.
+- The`-f` flag allows us to specify the format of the output payload file. In this case, it is `war` because that is the type of file the server executes.
+- The`-o` flag specifies the name of the output file.
