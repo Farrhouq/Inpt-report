@@ -5,12 +5,17 @@
 ### Submitted by: Imoro Umar Farouq Mpagya
 
 ## Table of Contents
+- **Scope**
 - **Host Discovery**
 - **Service Discovery and Port Scanning**
 - **Vulnerability Scanning**
 - **Web-Based Attack Surfaces**
 - **Generating Payloads**
+- **References**
 
+## Scope
+The scope of engagement comprises of an internal network: `10.10.10.0/24` and a domain
+name: `https://virtualinfosecafrica.com/`
 
 ## Host Discovery
 A host is a network service which has an IP address. Host discovery forms part of the information-gathering process, where we find information about the active hosts in the given network to know what is possible to hack through.
@@ -149,3 +154,7 @@ can execute base64 encoded payloads:
 The generated payloads ready to be delivered are shown in the directory below:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/24.png)
+
+
+## References
+- https://cve.mitre.org/cve/search_cve_list.html
