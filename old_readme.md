@@ -5,40 +5,53 @@
 ### Submitted by: Imoro Umar Farouq Mpagya
 
 ## Table of Contents
-- Table of Contents
-- Executive Summary
-- Analysis of Overall Security Posture
-- Key Recommendations
-- Testing Methodology
-- Summary of Findings
-- Detailed Findings
+- **Scope**
+- **Host Discovery**
+- **Service Discovery and Port Scanning**
+- **Vulnerability Scanning**
+- **Web-Based Attack Surfaces**
+- **Generating Payloads**
+- **References**
 
+## Scope
+The scope of engagement comprises of an internal network: `10.10.10.0/24` and a domain
+name: `https://virtualinfosecafrica.com/`
 
-
-## Testing Methodology
-The scope of this engagement included the internal network `10.10.10.0/24` and the domain `https://virtualinfosecafrica.com/`.
-
-Host discovery was conducted to identify active devices within the provided network. Using nmap, a ping scan was performed to locate live hosts, utilizing the -sn flag, as seen in the following screenshot:
+## Host Discovery
+A host is a network service which has an IP address. Host discovery forms part of the information-gathering process, where we find information about the active hosts in the given network to know what is possible to hack through.
+Using `nmap`, we can discover the hosts on the given network by performing a ping scan as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/1.png)
 
-This method efficiently determined which hosts were active. Once identified, active IP addresses were extracted for further analysis by redirecting the results into a file for use in subsequent scans:
+- The `-sn` flag indicates a ping scan to determine which hosts are up.
+
+Now, after determining which hosts are up from the `nmap` scan, we would want to extract the active IPs into a file for later use. This can be done by modifying the command as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/2.png)
 
-Additionally, subdomain enumeration was performed on the domain using aiodnsbrute. This was essential to uncover any subdomains potentially hosting services or vulnerabilities that might be of interest during further testing:
+Lastly, we can perform a subdomain enumeration on the given domain, to find the IP addresses of any subdomains, as they might be of interest. This can be done using a tool like `aiodnsbrute` as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/3.png)
 
-After identifying active hosts, service discovery was performed using nmap with the -sV flag to identify open ports and services running on the discovered hosts. The results were saved in a greppable format (-oG) to facilitate the extraction of specific data for further use, as shown below:
+
+## Service Discovery and Port Scanning
+After discovering the hosts that are up, to find and exploit potential vulnerabilities, we need to learn what services these hosts are running, and on what ports. It is necessary to find the services we might be able to hack into eventually.
+
+We can use `nmap` to do a service discovery by scanning the ports on the hosts we discovered earlier. Also, it will be convenient for us to save the results in a file for later use:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/4.png)
 
-To enhance analysis, services were categorized by protocol using grep, focusing on protocols such as mysql, vnc, rdp, smtp, telnet, and others. This organization was carried out using the following commands:
+- The `sV` flag indicates a service discovery scan.
+- The `iL` flag is used to input the IP addresses from a file. In this case, I used the output file from the host discovery file as the input to this scan (`online_hosts.txt`).
+- The `oG` flag indicates that the output is to be put in a greppable format, making it easy to extract the results from it. It requires an output file name, `service_scan.gnmap`.
+
+To effectively use our results in later specific attacks, it would be more convenient to sort the services discovered into their respective protocols. Since our output file was saved in a greppable format, we can achieve this using `grep`:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/5.png)
 
-Additional services such as mysql, vnc, and rdp were similarly filtered:
+- The `mkdir` command creates a new folder to organise the protocol-specific results.
+
+A similar can be done for the other protocols: (`mysql`, `vnc`, `rdp`, `smtp`, `telnet`, `netbios-ssn`, `microsoft-ds`) as follows:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/6.png)
 
@@ -46,9 +59,9 @@ Additional services such as mysql, vnc, and rdp were similarly filtered:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/8.png)
 
-Further sorting and filtering by protocol continued with smtp, telnet, netbios-ssn, and microsoft-ds services:
-
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/9.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/11.png)
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/10.png)
 
@@ -56,12 +69,9 @@ Further sorting and filtering by protocol continued with smtp, telnet, netbios-s
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/12.png)
 
-Finally, the associated IPs were filtered into separate files for more direct use:
+The associated IPs can be further filtered into separate files for more direct use:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/15.png)
-
-A risk assessment was conducted following the guidelines in NIST Special Publication (800-30 R1). Each vulnerability identified during the engagement was mapped to a qualitative risk rating, taking into account both the likelihood of exploitation and the potential impact on the network.
-
 
 There are associated vulnerabilities with these services and their versions. The relevant CVE id's are listed below:
 ### Apache httpd 2.4.49 (on http):
