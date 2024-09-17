@@ -5,14 +5,11 @@
 ### Submitted by: Imoro Umar Farouq Mpagya
 
 ## Table of Contents
-- Table of Contents
-- Executive Summary
-- Analysis of Overall Security Posture
-- Key Recommendations
-- Testing Methodology
-- Summary of Findings
-- Detailed Findings
-
+- **Table of Contents**
+- **Testing Methodology**
+- **Summary of Findings**
+- **Detailed Findings**
+- **References**
 
 
 ## Testing Methodology
@@ -308,7 +305,7 @@ The screenshots taken by `eyewitness` revealed several important details about t
 These findings provide a basis for deeper analysis and remediation recommendations to enhance the security of the web servers.
 
 **Evidence:**
-- ![using eyewitness](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
+- ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
 
 ### `Cewl`
 The use of `cewl` for generating custom wordlists revealed several critical insights:
@@ -322,3 +319,13 @@ The use of `cewl` for generating custom wordlists revealed several critical insi
 
 **Evidence:**
 - ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
+
+## References
+### CVSS v3.0 Reference Table
+| Qualitative Rating | CVSS Score |
+|--------------------|------------|
+| None/Informational | N/A        |
+| Low                | 0.1 – 3.9  |
+| Medium             | 4.0 – 6.9  |
+| High               | 7.0 – 8.9  |
+| Critical           | 9.0 – 10.0 |
