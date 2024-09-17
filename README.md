@@ -78,7 +78,8 @@ A risk assessment was conducted following the guidelines in NIST Special Publica
 | Buffer Overflow in BSD telnetd                                          | Critical |
 | The Netlogon Server Issue in Samba 3.6.25                               | High     |
 | Print Spooler Service Impersonation Vulnerability                        | High     |
-
+| Cewl for custom wordlists                                                |   NA     |
+| Eyewitness for web vulnerability discovery                               |   NA     |
 
 ## Detailed Findings
 
