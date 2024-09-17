@@ -63,31 +63,81 @@ Finally, the associated IPs were filtered into separate files for more direct us
 A risk assessment was conducted following the guidelines in NIST Special Publication (800-30 R1). Each vulnerability identified during the engagement was mapped to a qualitative risk rating, taking into account both the likelihood of exploitation and the potential impact on the network.
 
 
-There are associated vulnerabilities with these services and their versions. The relevant CVE id's are listed below:
-### Apache httpd 2.4.49 (on http):
-*CVE-2021-42013, CVE-2021-41773, CVE-2021-41524, CVE-2021-40438, CVE-2021-39275, CVE-2021-36160, CVE-2021-34798*
+## Summary of Findings
 
-### MySQL 5.6.49 (on mysql)
-*CVE-2020-14867, CVE-2020-14812, CVE-2020-14793, CVE-2020-14769, CVE-2020-14765, CVE-2020-14672*
+| Finding                                                                 | Severity |
+|:-------------------------------------------------------------------------|:----------:|
+| Path Traversal Attack in Apache HTTP Server                             | High     |
+| MySQL Password Spraying Vulnerability                                    | Medium   |
+| Local Privilege Escalation in RealVNC VNC Server                        | High     |
+| VNC Password Bruteforcing Vulnerability                                  | Medium   |
+| Elevation of Privilege via Folder Redirection in Microsoft Windows      | High     |
+| SMTP Smuggling Vulnerability in Exim smtpd 4.92                         | Medium   |
+| Buffer Overflow in BSD telnetd                                          | Critical |
+| The Netlogon Server Issue in Samba 3.6.25                               | High     |
+| Print Spooler Service Impersonation Vulnerability                        | High     |
 
-### RealVNC 5.3.2 (on vnc)
-*CVE-2024-6894, CVE-2024-23663, CVE-2024-1331, CVE-2023-49438, CVE-2023-45859, CVE-2022-41975, CVE-2022-3474, CVE-2022-27502, CVE-2022-27489, CVE-2022-0439, CVE-2021-42362, CVE-2021-40083, CVE-2021-34408, CVE-2021-24140, CVE-2021-23443, CVE-2021-20746, CVE-2020-5408, CVE-2020-5407, CVE-2020-35738, CVE-2020-35489, CVE-2019-17133, CVE-2019-17075, CVE-2019-17056, CVE-2019-17055, CVE-2019-17054, CVE-2019-17053, CVE-2019-17052, CVE-2018-6660, CVE-2018-6659, CVE-2018-12615, CVE-2018-12029, CVE-2018-12028, CVE-2018-12026, CVE-2017-7671, CVE-2017-7581, CVE-2017-3980, CVE-2017-3936, CVE-2016-8583, CVE-2016-8582, CVE-2016-8581, CVE-2016-8580, CVE-2016-8027, CVE-2016-6355, CVE-2016-1409, CVE-2016-1407, CVE-2016-0201, CVE-2015-6432, CVE-2015-5206, CVE-2015-5168, CVE-2015-4171, CVE-2015-4078, CVE-2014-6275, CVE-2013-6886, CVE-2013-2125, CVE-2012-2317, CVE-2010-4700, CVE-2010-3065, CVE-2010-3064, CVE-2010-3063, CVE-2010-3062, CVE-2010-2225, CVE-2010-2190, CVE-2010-2101, CVE-2010-2100, CVE-2010-2097, CVE-2010-2093, CVE-2010-1917, CVE-2010-1915, CVE-2010-1914, CVE-2010-1868, CVE-2010-1866, CVE-2010-1864, CVE-2010-1862, CVE-2010-1861, CVE-2010-1860, CVE-2010-1587, CVE-2009-1178, CVE-2008-4770, CVE-2008-3493, CVE-2007-5919, CVE-2007-1581, CVE-2006-2369, CVE-2005-0322, CVE-2004-2512, CVE-2004-2511, CVE-2004-1750, CVE-2004-0698, CVE-2004-0697, CVE-2004-0696, CVE-2004-0695*
 
-### Microsoft Terminal Services (on rdp)
-*CVE-2021-26887, CVE-2017-0176, CVE-2014-0296, CVE-2012-0152, CVE-2011-1991, CVE-2009-1929, CVE-2009-1133, CVE-2007-2593, CVE-2006-4465, CVE-2006-4219, CVE-2005-3176, CVE-2005-1794, CVE-2004-0900, CVE-2004-0899, CVE-2003-0807, CVE-2003-0109, CVE-2003-0003, CVE-2002-1933, CVE-2002-1795, CVE-2002-0864, CVE-2002-0863, CVE-2002-0726, CVE-2002-0694, CVE-2002-0693, CVE-2002-0444, CVE-2001-0908, CVE-2000-0089*
 
-### Exim smtpd 4.92 (on smtp)
-*CVE-2023-51766, CVE-2023-42119, CVE-2023-42117, CVE-2023-42116, CVE-2023-42115, CVE-2021-38371, CVE-2020-28024, CVE-2020-28023, CVE-2020-28021, CVE-2020-28020, CVE-2020-28018, CVE-2019-16928, CVE-2019-13917, CVE-2018-6789, CVE-2017-16944, CVE-2017-16943, CVE-2012-5671, CVE-2010-4345, CVE-2010-4344, CVE-2003-0743, CVE-2001-0690*
+Apache httpd 2.4.49 (on http):
+Path Traversal Attack in Apache HTTP Server (CVE-2021-41773)
+  A flaw in Apache 2.4.49 allows attackers to perform path traversal, accessing files outside restricted directories, possibly leading to remote code execution.
+  7.5 (High)
+  Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/25.png)
+
+
+MySQL 5.6.49 (on mysql)
+MySQL Password Spraying Vulnerability
+  MySQL instances are vulnerable to password spraying attacks, where an attacker attempts to gain unauthorized access by systematically trying a set of common passwords across multiple accounts. Weak password policies or default credentials can lead to successful exploitation, compromising the database and potentially the broader network.
+CVSS Score: 5.3 (Medium) (Estimated based on typical impact of password spraying attacks)
+Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/16.png)
+
+RealVNC 5.3.2 (on vnc)
+Local Privilege Escalation in RealVNC VNC Server
+CVE ID: CVE-2022-41975
+RealVNC VNC Server and VNC Viewer on Windows are vulnerable to local privilege escalation via the MSI installer Repair mode, allowing local attackers to elevate their privileges.
+CVSS Score: 7.1 (High)
+Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/26.png)
+-----
+VNC Password Bruteforcing Vulnerability
+  VNC instances are vulnerable to password bruteforcing attacks, where an attacker attempts to gain unauthorized access by systematically trying a set of common passwords across multiple accounts. Weak password policies or default credentials can lead to successful exploitation, compromising the database and potentially the broader network.
+CVSS Score: 5.3 (Medium) (Estimated based on typical impact of password spraying attacks)
+Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/17.png)
+----
+
+Microsoft Terminal Services (on rdp)
+Elevation of Privilege via Folder Redirection in Microsoft Windows
+CVE ID: CVE-2021-26887
+An attacker could exploit folder redirection to begin redirecting another user's personal data to a maliciously created folder, resulting in unauthorized access to sensitive data.
+CVSS Score: 7.8 (High)
+Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/27.png)
+
+Exim smtpd 4.92 (on smtp)
+1. SMTP Smuggling Vulnerability
+CVE ID: CVE-2023-51766
+Summary: This allows attackers to inject emails with spoofed addresses in certain configurations. It can bypass SPF protection, potentially leading to unauthorized email transmission.
+5.3 (Medium)
+Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/28.png)
+
 
 ### BSD telnetd (on telnet)
-*CVE-2011-4862, CVE-2005-0488, CVE-2005-0469, CVE-2005-0468, CVE-2001-0554, CVE-1999-1098*
+CVE-2011-4862
+Description: Buffer overflow in telnetd allows remote attackers to execute arbitrary code via a long encryption key.
+CVSS v2 Score: 10.0 (Critical)
+Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/29.png)
+
 
 ### Samba 3.6.25 (on netbios-ssn)
-*CVE-2015-0240*
+CVE-2015-0240
+Description: The Netlogon server implementation in Samba 3.5.x and 3.6.x before 3.6.25, 4.0.x before 4.0.25, 4.1.x before 4.1.17, and 4.2.x before 4.2.0rc5 performs a free operation on an uninitialized stack pointer. This allows remote attackers to execute arbitrary code via crafted Netlogon packets using the ServerPasswordSet RPC API.
+CVSS v2 Score: 7.5 (High)
+Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/30.png)
+
 
 ### Windows 7 - Samba file sharing (on `microsoft-ds`)
-*CVE-2010-2729, CVE-2009-2813, CVE-2007-2407*
-
+CVE-2010-2729
+Description: The Print Spooler service in Microsoft Windows XP SP2 and SP3, Windows Server 2003 SP2, Windows Vista SP1 and SP2, Windows Server 2008 Gold, SP2, and R2, and Windows 7, when printer sharing is enabled, does not properly validate spooler access permissions. This allows remote attackers to create files in a system directory and execute arbitrary code by sending a crafted print request over RPC.
+CVSS v2 Score: 7.5 (High)
 
 ## Vulnerability Scanning
 Using the protocol-specific files we created under service discovery, we can scan for login vulnerabilities with the Metasploit Auxiliary module. We will scan for common credentials
@@ -146,3 +196,13 @@ The generated payloads ready to be delivered are shown in the directory below:
 
 ## References
 - https://cve.mitre.org/cve/search_cve_list.html
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/26.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/27.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/28.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/29.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/30.png)
