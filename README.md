@@ -78,66 +78,181 @@ A risk assessment was conducted following the guidelines in NIST Special Publica
 | Print Spooler Service Impersonation Vulnerability                        | High     |
 
 
+## Detailed Findings
 
-Apache httpd 2.4.49 (on http):
-Path Traversal Attack in Apache HTTP Server (CVE-2021-41773)
-  A flaw in Apache 2.4.49 allows attackers to perform path traversal, accessing files outside restricted directories, possibly leading to remote code execution.
-  7.5 (High)
-  Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/25.png)
+### Path Traversal Attack in Apache HTTP Server
 
+| Current Rating | CVSS |
+|----------------|------|
+| High           | 7.5  |
 
-MySQL 5.6.49 (on mysql)
-MySQL Password Spraying Vulnerability
-  MySQL instances are vulnerable to password spraying attacks, where an attacker attempts to gain unauthorized access by systematically trying a set of common passwords across multiple accounts. Weak password policies or default credentials can lead to successful exploitation, compromising the database and potentially the broader network.
-CVSS Score: 5.3 (Medium) (Estimated based on typical impact of password spraying attacks)
-Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/16.png)
+**Finding Summary:**
+A flaw in Apache HTTP Server version 2.4.49 allows attackers to perform path traversal and access files outside of restricted directories. This vulnerability can potentially lead to remote code execution. Attackers can exploit this flaw by sending crafted requests to the server, allowing unauthorized file access and control over system resources.
 
-RealVNC 5.3.2 (on vnc)
-Local Privilege Escalation in RealVNC VNC Server
-CVE ID: CVE-2022-41975
-RealVNC VNC Server and VNC Viewer on Windows are vulnerable to local privilege escalation via the MSI installer Repair mode, allowing local attackers to elevate their privileges.
-CVSS Score: 7.1 (High)
-Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/26.png)
------
-VNC Password Bruteforcing Vulnerability
-  VNC instances are vulnerable to password bruteforcing attacks, where an attacker attempts to gain unauthorized access by systematically trying a set of common passwords across multiple accounts. Weak password policies or default credentials can lead to successful exploitation, compromising the database and potentially the broader network.
-CVSS Score: 5.3 (Medium) (Estimated based on typical impact of password spraying attacks)
-Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/17.png)
-----
+**Evidence**
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/25.png)
 
-Microsoft Terminal Services (on rdp)
-Elevation of Privilege via Folder Redirection in Microsoft Windows
-CVE ID: CVE-2021-26887
-An attacker could exploit folder redirection to begin redirecting another user's personal data to a maliciously created folder, resulting in unauthorized access to sensitive data.
-CVSS Score: 7.8 (High)
-Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/27.png)
+**Affected Resources**
+10.10.10.2, 10.10.10.30, 10.10.10.45, 10.10.10.55
 
-Exim smtpd 4.92 (on smtp)
-1. SMTP Smuggling Vulnerability
-CVE ID: CVE-2023-51766
-Summary: This allows attackers to inject emails with spoofed addresses in certain configurations. It can bypass SPF protection, potentially leading to unauthorized email transmission.
-5.3 (Medium)
-Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/28.png)
+**Recommendations**
+Upgrade to Apache HTTP Server version 2.4.50 or later, which addresses this path traversal vulnerability.
 
+---
 
-### BSD telnetd (on telnet)
-CVE-2011-4862
-Description: Buffer overflow in telnetd allows remote attackers to execute arbitrary code via a long encryption key.
-CVSS v2 Score: 10.0 (Critical)
-Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/29.png)
+### MySQL Password Spraying Vulnerability
 
+| Current Rating | CVSS |
+|----------------|------|
+| Medium         | 5.3  |
 
-### Samba 3.6.25 (on netbios-ssn)
-CVE-2015-0240
-Description: The Netlogon server implementation in Samba 3.5.x and 3.6.x before 3.6.25, 4.0.x before 4.0.25, 4.1.x before 4.1.17, and 4.2.x before 4.2.0rc5 performs a free operation on an uninitialized stack pointer. This allows remote attackers to execute arbitrary code via crafted Netlogon packets using the ServerPasswordSet RPC API.
-CVSS v2 Score: 7.5 (High)
+**Finding Summary:**
+MySQL 5.6.49 instances are vulnerable to password spraying attacks. Attackers can exploit weak password policies by systematically attempting common passwords across multiple accounts. This could lead to unauthorized access to the MySQL database and, consequently, compromise the broader network. This can be done using metasploit modules
+
+**Evidence**
+![Using metasploit to brute-force mysql passwords](https://github.com/Farrhouq/Inpt-report/blob/main/images/16.png)
+
+**Affected Resources**
+10.10.10.5, 10.10.10.40
+
+**Recommendations**
+- Implement strong, unique passwords for all MySQL accounts.
+- Enforce password complexity and expiration policies.
+- Monitor failed login attempts and lock accounts after multiple failed attempts to mitigate brute force attacks.
+- Use multi-factor authentication (MFA) if available.
+
+---
+
+### Local Privilege Escalation in RealVNC VNC Server
+
+| Current Rating | CVSS |
+|----------------|------|
+| High           | 7.1  |
+
+**Finding Summary:**
+A vulnerability in RealVNC VNC Server and Viewer on Windows allows local attackers to elevate privileges via the MSI installer Repair mode. This escalation could give attackers unauthorized access to sensitive system resources and allow them to perform actions typically reserved for administrators.
+
+**Evidence**
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/26.png)
+
+**Affected Resources**
+10.10.10.10, 10.10.10.50
+
+**Recommendations**
+- Upgrade to the latest version of RealVNC VNC Server that addresses this privilege escalation issue.
+- Restrict access to the VNC server to trusted users and networks.
+- Regularly review and update your VNC server and associated software to patch known vulnerabilities.
+
+---
+
+### VNC Password Bruteforcing Vulnerability
+
+| Current Rating | CVSS |
+|----------------|------|
+| Medium         | 5.3  |
+
+**Finding Summary:**
+RealVNC 5.3.2 is vulnerable to brute force attacks on the VNC password. Attackers can exploit weak password policies or default credentials to gain unauthorized access to VNC instances. Successful exploitation may result in control over affected systems and potential access to sensitive data.
+
+**Evidence**
+![Using metasploit to brute-force mysql passwords](https://github.com/Farrhouq/Inpt-report/blob/main/images/17.png)
+
+**Affected Resources**
+10.10.10.10, 10.10.10.50
+
+**Recommendations**
+- Use strong, unique passwords for VNC accounts.
+- Configure the VNC server to lock out accounts after several failed login attempts.
+- Regularly monitor VNC access logs for unusual activity.
+- Consider using an additional layer of authentication or encryption to protect VNC sessions.
+
+---
+
+### Elevation of Privilege via Folder Redirection in Microsoft Windows
+
+| Current Rating | CVSS |
+|----------------|------|
+| High           | 7.8  |
+
+**Finding Summary:**
+This vulnerability in Microsoft Terminal Services allows attackers to exploit folder redirection, redirecting another user's personal data to a maliciously created folder. By doing so, an attacker can gain unauthorized access to sensitive information stored on a compromised system, potentially leading to privilege escalation.
+
+**Evidence**
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/27.png)
+
+**Affected Resources**
+10.10.10.31, 10.10.10.60
+
+**Recommendations**
+- Apply the latest security updates and patches from Microsoft to address this vulnerability.
+- Review and restrict folder redirection settings to prevent unauthorized data access.
+- Implement least privilege principles and regularly audit folder permissions.
+
+---
+
+### SMTP Smuggling Vulnerability in Exim smtpd 4.92
+
+| Current Rating | CVSS |
+|----------------|------|
+| Medium         | 5.3  |
+
+**Finding Summary:**
+Exim SMTPd version 4.92 is vulnerable to SMTP smuggling, which allows attackers to inject spoofed emails in certain configurations. This vulnerability bypasses SPF protection mechanisms and can result in unauthorized email transmission, leading to further exploitation within email-based communications.
+
+**Evidence**
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/28.png)
+
+**Affected Resources**
+10.10.10.15
+
+**Recommendations**
+- Upgrade to Exim version 4.94.1 or later to fix the SMTP smuggling vulnerability.
+- Review and tighten email server configurations to prevent unauthorized email injection.
+- Monitor email traffic for unusual patterns that might indicate exploitation attempts.
+
+---
+
+### Buffer Overflow in BSD telnetd
+
+| Current Rating | CVSS |
+|----------------|------|
+| Critical       | 10   |
+
+**Finding Summary:**
+A buffer overflow vulnerability in BSD telnetd allows remote attackers to execute arbitrary code by sending a long encryption key during the telnet session. This vulnerability poses a significant threat as it allows attackers to take full control of the affected system without prior authentication.
+
+**Evidence**
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/29.png)
+
+**Affected Resources**
+10.10.10.20
+
+**Recommendations**
+- Upgrade to the latest version of BSD telnetd or use an alternative, more secure remote access tool.
+- Disable telnet services if they are not required, and use secure alternatives like SSH.
+- Regularly update and patch software to address known vulnerabilities.
+---
+
+### The Netlogon Server Issue in Samba 3.6.25
+
+| Current Rating | CVSS |
+|----------------|------|
+| High           | 7.5  |
+
+**Finding Summary:**
+A vulnerability in the Netlogon server implementation of Samba allows remote attackers to execute arbitrary code by exploiting an uninitialized stack pointer in crafted Netlogon packets. Attackers can use the ServerPasswordSet RPC API to trigger this vulnerability, potentially leading to complete control of affected systems.
+
+**Evidence**
 Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/30.png)
 
+**Affected Resources**
+10.10.10.21
 
-### Windows 7 - Samba file sharing (on `microsoft-ds`)
-CVE-2010-2729
-Description: The Print Spooler service in Microsoft Windows XP SP2 and SP3, Windows Server 2003 SP2, Windows Vista SP1 and SP2, Windows Server 2008 Gold, SP2, and R2, and Windows 7, when printer sharing is enabled, does not properly validate spooler access permissions. This allows remote attackers to create files in a system directory and execute arbitrary code by sending a crafted print request over RPC.
-CVSS v2 Score: 7.5 (High)
+**Recommendations**
+- Upgrade to Samba version 3.6.25 or later to mitigate this Netlogon server vulnerability.
+- Review and configure Samba settings to limit exposure to untrusted networks.
+- Regularly apply security updates and patches to Samba and associated services.
+
 
 ## Vulnerability Scanning
 Using the protocol-specific files we created under service discovery, we can scan for login vulnerabilities with the Metasploit Auxiliary module. We will scan for common credentials
