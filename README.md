@@ -80,6 +80,42 @@ A risk assessment was conducted following the guidelines in NIST Special Publica
 
 ## Detailed Findings
 
+### Remote Code Execution via Payloads on Apache Tomcat and Python Servers
+
+| Current Rating | CVSS |
+|----------------|------|
+| High           | 7.5  |
+
+**Finding Summary:**
+The IP address 10.10.10.55 is running an Apache Tomcat web server, which is vulnerable to remote code execution. By generating a payload using `msfvenom` with the `java/jsp_shell_bind_tcp` module, attackers can trigger a TCP bind shell. This allows remote execution of malicious code. Similarly, the server at IP address 10.10.10.30, running a Python server, can execute base64 encoded payloads, which also poses a security risk.
+
+**Evidence**
+1. Payload generation for Apache Tomcat server:
+   ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/22.png)
+   - `-p java/jsp_shell_bind_tcp`: Specifies the payload module for Java-based servers.
+   - `RHOST`: Remote host IP address (10.10.10.55).
+   - `LPORT`: Local port number for the bind shell (80).
+   - `-f war`: Specifies the format of the output file (WAR for Java applications).
+   - `-o output_file.war`: Names the output file.
+
+2. Payload generation for Python server:
+   ![Link to Image 23](https://github.com/Farrhouq/Inpt-report/blob/main/images/23.png)
+   - The payload is base64 encoded to be executed on a Python server.
+
+3. Directory with generated payloads:
+   ![Link to Image 24](https://github.com/Farrhouq/Inpt-report/blob/main/images/24.png)
+
+**Affected Resources**
+10.10.10.30, 10.10.10.55
+
+**Recommendations**
+For Apache Tomcat:
+- Ensure that appropriate security measures are in place to prevent unauthorized execution of payloads. Regularly update Tomcat and review security configurations.
+
+For Python Server:
+- Implement stringent controls and input validation to prevent unauthorized execution of base64 encoded payloads.
+
+
 ### Path Traversal Attack in Apache HTTP Server
 
 | Current Rating | CVSS |
@@ -111,6 +147,8 @@ MySQL 5.6.49 instances are vulnerable to password spraying attacks. Attackers ca
 
 **Evidence**
 ![Using metasploit to brute-force mysql passwords](https://github.com/Farrhouq/Inpt-report/blob/main/images/16.png)
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/13.png)
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/14.png)
 
 **Affected Resources**
 10.10.10.5, 10.10.10.40
@@ -254,30 +292,6 @@ Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/30.png)
 - Regularly apply security updates and patches to Samba and associated services.
 
 
-## Vulnerability Scanning
-Using the protocol-specific files we created under service discovery, we can scan for login vulnerabilities with the Metasploit Auxiliary module. We will scan for common credentials
-for `mysql`, `vnc`, `rdp`, and `smb` services. This will be achieved by the following steps:
-
-1. First, we access the Metasploit Framework Console using `msfconsole`:
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/13.png)
-
-2. Then, we access the mysql auxiliary login scanner as follows:
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/14.png)
-
-3. Next, we set the parameters we need for the module, and run the scan:
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/16.png)
-
-Similar steps will be followed for vnc, rdp, and smb scans:
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/17.png)
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/18.png)
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/19.png)
-
-
 In the above scans, public password lists were used for each service. However, in situations where we suspect the target might be using site-specific or context-relevant passwords (e.g., company names, employee names, or phrases from the website), we can generate custom wordlists using a tool like `cewl`. This is demonstrated below:
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
@@ -288,25 +302,6 @@ Using `eyewitness`, we can open the links and take screenshots of the web server
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
 
-## Generating Payloads
-The IP address 10.10.10.55 is running an Apache Tomcat web server. We can generate a payload for this server that can trigger a TCP bind when executed. This bind will give an attacker a shell on the server where they can run malicious code remotely. This can be achieved with the following command:
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/22.png)
-
-- The `-p` flag allows us to select the payload module from `msfvenom`. In this case, it is `java/jsp_shell_bind_tcp` because the server is Java-based.
-- `RHOST` indicates the host IP address which is `10.10.10.55`.
-- `LPORT` indicates the port number, which is 80.
-- The`-f` flag allows us to specify the format of the output payload file. In this case, it is `war` because that is the type of file the server executes.
-- The`-o` flag specifies the name of the output file.
-
-A similar approach can be taken for the host 10.10.10.30 running a Python server that
-can execute base64 encoded payloads:
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/23.png)
-
-The generated payloads ready to be delivered are shown in the directory below:
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/24.png)
 
 
 ## References
