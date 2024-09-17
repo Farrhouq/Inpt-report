@@ -60,6 +60,11 @@ Finally, the associated IPs were filtered into separate files for more direct us
 
 ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/15.png)
 
+During the penetration testing, we utilized `eyewitness` to assess the web-based attack surfaces of the target servers. `eyewitness` is a tool that allows us to open the links and capture screenshots of web servers to analyze their public-facing interfaces. This helps in identifying potential vulnerabilities and understanding the security posture of the web applications.
+
+**Tool Used:**
+- `eyewitness`: Captures screenshots of web servers to document their security posture.
+
 A risk assessment was conducted following the guidelines in NIST Special Publication (800-30 R1). Each vulnerability identified during the engagement was mapped to a qualitative risk rating, taking into account both the likelihood of exploitation and the potential impact on the network.
 
 
@@ -291,28 +296,29 @@ Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/30.png)
 - Review and configure Samba settings to limit exposure to untrusted networks.
 - Regularly apply security updates and patches to Samba and associated services.
 
+### `Eyewitness`
+The screenshots taken by `eyewitness` revealed several important details about the web servers:
+1. **Web Server Interfaces:**
+   - Screenshots capture the interface and visible configurations of the web servers, highlighting any exposed or potentially vulnerable components.
+   - ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
 
-In the above scans, public password lists were used for each service. However, in situations where we suspect the target might be using site-specific or context-relevant passwords (e.g., company names, employee names, or phrases from the website), we can generate custom wordlists using a tool like `cewl`. This is demonstrated below:
+2. **Potential Vulnerabilities:**
+   - Certain web interfaces displayed signs of misconfigurations or exposed sensitive information that could be leveraged in an attack.
 
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
+These findings provide a basis for deeper analysis and remediation recommendations to enhance the security of the web servers.
 
+**Evidence:**
+- ![using eyewitness](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
 
-## Web-Based Attack Surfaces
-Using `eyewitness`, we can open the links and take screenshots of the web servers. This can be done as follows:
+### `Cewl`
+The use of `cewl` for generating custom wordlists revealed several critical insights:
 
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
+1. **Custom Wordlist Generation:**
+   - `cewl` was used to scrape content from the target website to create a wordlist with contextually relevant terms.
+   - ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
 
+2. **Effectiveness:**
+   - The custom wordlists proved effective in identifying passwords that were specific to the target’s context, potentially increasing the success rate of brute-force attacks.
 
-
-## References
-- https://cve.mitre.org/cve/search_cve_list.html
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/26.png)
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/27.png)
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/28.png)
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/29.png)
-
-![](https://github.com/Farrhouq/Inpt-report/blob/main/images/30.png)
+**Evidence:**
+- ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
