@@ -102,11 +102,13 @@ The IP address 10.10.10.55 is running an Apache Tomcat web server, which is vuln
    - `-o output_file.war`: Names the output file.
 
 2. Payload generation for Python server:
-   ![Link to Image 23](https://github.com/Farrhouq/Inpt-report/blob/main/images/23.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/23.png)
    - The payload is base64 encoded to be executed on a Python server.
 
 3. Directory with generated payloads:
-   ![Link to Image 24](https://github.com/Farrhouq/Inpt-report/blob/main/images/24.png)
+
+![](https://github.com/Farrhouq/Inpt-report/blob/main/images/24.png)
 
 **Affected Resources**
 10.10.10.30, 10.10.10.55
@@ -298,7 +300,6 @@ Proof: ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/30.png)
 The screenshots taken by `eyewitness` revealed several important details about the web servers:
 1. **Web Server Interfaces:**
    - Screenshots capture the interface and visible configurations of the web servers, highlighting any exposed or potentially vulnerable components.
-   - ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/21.png)
 
 2. **Potential Vulnerabilities:**
    - Certain web interfaces displayed signs of misconfigurations or exposed sensitive information that could be leveraged in an attack.
@@ -313,7 +314,6 @@ The use of `cewl` for generating custom wordlists revealed several critical insi
 
 1. **Custom Wordlist Generation:**
    - `cewl` was used to scrape content from the target website to create a wordlist with contextually relevant terms.
-   - ![](https://github.com/Farrhouq/Inpt-report/blob/main/images/20.png)
 
 2. **Effectiveness:**
    - The custom wordlists proved effective in identifying passwords that were specific to the target’s context, potentially increasing the success rate of brute-force attacks.
